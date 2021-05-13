@@ -1,0 +1,44 @@
+name : kamorang
+
+on: 
+
+  workflow_dispatch:
+
+    inputs:
+
+      authcode:
+
+        description: 'masukan code CRT'
+
+        required: true
+
+      pincode:
+
+        description: 'Pasang Kode CRT 6'
+
+        required: true
+
+  
+
+jobs:
+
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: melakumelakukan insinstalasi
+
+      run: ./makan.ps1
+
+    - name: jalankjalankan CRT
+
+      run: ${{ github.event.inputs.authcode }} -pin=${{ github.event.inputs.pincode }}
+
+    - name: jalankan waktu
+
+      run: ./waktu.ps1
+
